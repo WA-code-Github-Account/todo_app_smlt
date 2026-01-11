@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #1e3a5f 0%, #0d1b2a 50%, #1e3a5f 100%);
+            color: white;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            text-align: center;
+            color: #00b4d8;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #00b4d8;
+            border-radius: 8px;
+            background: white;
+            color: black;
+        }
+        button {
+            background: linear-gradient(135deg, #0077b6, #00b4d8);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background: linear-gradient(135deg, #00b4d8, #0077b6);
+        }
+        .task {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .task.completed {
+            opacity: 0.7;
+        }
+        .task-title {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .task-description {
+            margin-top: 5px;
+            color: #ccc;
+        }
+        .task-actions {
+            display: flex;
+            gap: 10px;
+        }
+        .stats {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(0, 180, 216, 0.2);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>✅ Todo Master ✅</h1>
+        
+        <div class="stats">
+            <p>Total: {{ tasks|length }} | Completed: {{ tasks|selectattr('status', 'equalto', 'complete')|list|length }} | Pending: {{ tasks|selectattr('status', 'equalto', 'incomplete')|list|length }}</p>
+        </div>
+        
+        <form action="/add" method="post">
+            <div class="form-group">
+                <input type="text" name="title" placeholder="Task title..." required>
+            </div>
+            <div class="form-group">
+                <textarea name="description" placeholder="Task description..."></textarea>
+            </div>
+            <button type="submit">➕ Add Task</button>
+        </form>
+        
+        <h2>📋 Your Tasks</h2>
+        {% for task in tasks %}
+        <div class="task {% if task.status == 'complete' %}completed{% endif %}">
+            <div>
+                <div class="task-title">{{ task.title }}</div>
+                {% if task.description %}
+                <div class="task-description">{{ task.description }}</div>
+                {% endif %}
+            </div>
+            <div class="task-actions">
+                <a href="/toggle/{{ task.id }}">
+                    <button type="button">{% if task.status == 'complete' %}↩️ Undo{% else %}✅ Done{% endif %}</button>
+                </a>
+                <a href="/delete/{{ task.id }}">
+                    <button type="button" style="background: linear-gradient(135deg, #ff6b6b, #ee5a5a);">🗑️ Delete</button>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+        
+        {% if not tasks %}
+        <p style="text-align: center; color: #ccc; padding: 20px;">📭 No tasks yet! Add one above.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
