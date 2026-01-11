@@ -1,0 +1,14 @@
+{
+  "name": "todo-app-vercel",
+  "version": "1.0.0",
+  "description": "Todo application for Vercel deployment",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'Build successful'"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "vercel": "^31.0.0"
+  }
+}
