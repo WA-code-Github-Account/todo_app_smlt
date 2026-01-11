@@ -1,0 +1,214 @@
+{
+  "project": "TODO CLI - Hackathon 2 Part 1",
+  "framework": "SpecKit Plus + Quadrant",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "skill_name": "Specification Writing",
+      "skill_id": "SKILL-001",
+      "description": "The ability to transform business requirements into clear, unambiguous technical specifications that can be directly implemented by developers or AI agents.",
+      "proficiency_levels": {
+        "beginner": "Can write basic feature descriptions with simple acceptance criteria.",
+        "intermediate": "Can create comprehensive specs with edge cases, error handling scenarios, and clear input/output definitions.",
+        "advanced": "Can write specs that anticipate integration challenges, include performance considerations, and provide exhaustive test case coverage."
+      },
+      "required_for": [
+        "Writing feature specifications for Add/List/Update/Delete/Toggle tasks",
+        "Creating acceptance criteria for each CLI command",
+        "Documenting edge cases",
+        "Defining test cases for validation"
+      ],
+      "success_criteria": [
+        "Spec is clear and implementable without further clarification",
+        "No ambiguity in requirements or expected behavior",
+        "All edge cases explicitly documented",
+        "Acceptance criteria are testable and measurable"
+      ],
+      "tools_used": [
+        "SpecKit Plus",
+        "Markdown",
+        "Quadrant methodology"
+      ]
+    },
+    {
+      "skill_name": "Software Architecture",
+      "skill_id": "SKILL-002",
+      "description": "The ability to design scalable, maintainable, and testable software structures with proper separation of concerns.",
+      "proficiency_levels": {
+        "beginner": "Can organize code into separate files and folders. Understands basic concepts of modules and imports.",
+        "intermediate": "Can design clean separation of concerns (Models/Storage/Commands/Utils). Applies SOLID principles consistently.",
+        "advanced": "Can design architectures that anticipate growth. Implements patterns like Repository, Command, Factory appropriately."
+      },
+      "required_for": [
+        "Designing the TODO CLI project structure",
+        "Separating domain models from storage logic",
+        "Creating command handlers for CLI operations",
+        "Planning component interactions and data flow"
+      ],
+      "success_criteria": [
+        "Each module has a single, clear responsibility",
+        "Dependencies flow in one direction",
+        "Components can be tested in isolation",
+        "No circular dependencies exist"
+      ],
+      "tools_used": [
+        "Python packages and modules",
+        "Design pattern references",
+        "SOLID principles checklist"
+      ]
+    },
+    {
+      "skill_name": "Python Development",
+      "skill_id": "SKILL-003",
+      "description": "Proficiency in writing production-quality Python code following modern best practices including PEP 8, type hints, and proper error handling.",
+      "proficiency_levels": {
+        "beginner": "Can write functional Python code. Understands basic data structures, functions, and classes.",
+        "intermediate": "Writes PEP 8 compliant code with type hints. Uses dataclasses. Implements proper exception handling.",
+        "advanced": "Leverages Python 3.13+ features. Writes comprehensive type annotations. Implements custom exceptions hierarchy."
+      },
+      "required_for": [
+        "Implementing the Task model with proper attributes",
+        "Building CLI interface with argument parsing",
+        "Creating in-memory storage with CRUD operations",
+        "Implementing input validation and error handling"
+      ],
+      "success_criteria": [
+        "Code passes PEP 8 linting",
+        "All functions have type hints",
+        "Docstrings follow Google/NumPy style",
+        "No bare except clauses"
+      ],
+      "tools_used": [
+        "Python 3.13+",
+        "UV package manager",
+        "typer for CLI",
+        "dataclasses for models"
+      ]
+    },
+    {
+      "skill_name": "AI Prompt Engineering",
+      "skill_id": "SKILL-004",
+      "description": "The ability to effectively communicate with AI coding assistants to generate high-quality, accurate code.",
+      "proficiency_levels": {
+        "beginner": "Can write basic prompts that describe what code is needed.",
+        "intermediate": "Crafts prompts with clear constraints, examples, and expected outputs. Breaks complex features into atomic tasks.",
+        "advanced": "Designs prompt chains for complex multi-step implementations. Anticipates AI limitations and works around them."
+      },
+      "required_for": [
+        "Generating implementation code for each feature",
+        "Breaking the 5 features into atomic coding tasks",
+        "Iterating on generated code to fix issues",
+        "Providing context about project architecture to AI"
+      ],
+      "success_criteria": [
+        "Prompts produce usable code on first or second attempt",
+        "Tasks are atomic enough to be completed in single interactions",
+        "AI outputs align with project architecture and standards"
+      ],
+      "tools_used": [
+        "Claude Code",
+        "Qwen CLI",
+        "SpecKit Plus prompts"
+      ]
+    },
+    {
+      "skill_name": "Code Review",
+      "skill_id": "SKILL-005",
+      "description": "The ability to systematically evaluate code for correctness, quality, maintainability, and adherence to standards.",
+      "proficiency_levels": {
+        "beginner": "Can identify obvious bugs and style issues. Checks if code runs and produces expected output.",
+        "intermediate": "Reviews against PEP 8 and project standards systematically. Validates SOLID principles adherence.",
+        "advanced": "Evaluates architectural decisions and long-term maintainability. Identifies subtle bugs and security issues."
+      },
+      "required_for": [
+        "Validating AI-generated code quality",
+        "Ensuring PEP 8 compliance across all files",
+        "Verifying SOLID principles are followed",
+        "Testing edge cases for each feature"
+      ],
+      "success_criteria": [
+        "All code follows PEP 8 style guidelines",
+        "SOLID principles are consistently applied",
+        "Edge cases are handled correctly",
+        "No security vulnerabilities"
+      ],
+      "tools_used": [
+        "ruff or flake8",
+        "mypy",
+        "Manual code review checklists"
+      ]
+    },
+    {
+      "skill_name": "Documentation",
+      "skill_id": "SKILL-006",
+      "description": "The ability to create clear, comprehensive, and maintainable documentation for different audiences.",
+      "proficiency_levels": {
+        "beginner": "Can write basic README with installation and usage instructions.",
+        "intermediate": "Creates comprehensive READMEs with examples and troubleshooting. Writes clear docstrings.",
+        "advanced": "Creates documentation systems that scale. Maintains specs history for traceability."
+      },
+      "required_for": [
+        "Writing the project README with installation and usage",
+        "Creating usage examples for all 5 CLI commands",
+        "Documenting the architecture and design decisions",
+        "Writing inline docstrings for all modules"
+      ],
+      "success_criteria": [
+        "README enables new user to install and use CLI in under 5 minutes",
+        "All public functions have docstrings",
+        "Usage examples cover common scenarios and edge cases",
+        "Documentation is accurate and matches current code"
+      ],
+      "tools_used": [
+        "Markdown",
+        "SpecKit Plus templates",
+        "Google/NumPy docstring format"
+      ]
+    },
+    {
+      "skill_name": "Project Management",
+      "skill_id": "SKILL-007",
+      "description": "The ability to plan, organize, track, and execute software projects effectively.",
+      "proficiency_levels": {
+        "beginner": "Can create basic task lists and track completion. Understands the concept of dependencies.",
+        "intermediate": "Breaks features into well-sized tasks with clear definitions of done. Identifies and manages task dependencies.",
+        "advanced": "Creates comprehensive project plans with contingencies. Optimizes task ordering for parallel work."
+      },
+      "required_for": [
+        "Breaking the 5 features into implementable tasks",
+        "Sequencing work based on dependencies",
+        "Tracking progress through implementation",
+        "Managing risks and ensuring quality standards"
+      ],
+      "success_criteria": [
+        "All 5 features are broken into atomic tasks",
+        "Task dependencies are identified and respected",
+        "Progress is visible and trackable",
+        "Quality gates are defined and enforced"
+      ],
+      "tools_used": [
+        "Task tracking tools",
+        "Quadrant methodology",
+        "Dependency mapping"
+      ]
+    }
+  ],
+  "skills_matrix": {
+    "summary": [
+      {"skill_id": "SKILL-001", "skill_name": "Specification Writing", "primary_phase": "Planning"},
+      {"skill_id": "SKILL-002", "skill_name": "Software Architecture", "primary_phase": "Design"},
+      {"skill_id": "SKILL-003", "skill_name": "Python Development", "primary_phase": "Implementation"},
+      {"skill_id": "SKILL-004", "skill_name": "AI Prompt Engineering", "primary_phase": "Implementation"},
+      {"skill_id": "SKILL-005", "skill_name": "Code Review", "primary_phase": "Verification"},
+      {"skill_id": "SKILL-006", "skill_name": "Documentation", "primary_phase": "Throughout"},
+      {"skill_id": "SKILL-007", "skill_name": "Project Management", "primary_phase": "Throughout"}
+    ],
+    "feature_mapping": [
+      {"feature": "Add Task", "primary_skills": ["SKILL-001", "SKILL-003", "SKILL-004"]},
+      {"feature": "List Tasks", "primary_skills": ["SKILL-001", "SKILL-003", "SKILL-004"]},
+      {"feature": "Update Task", "primary_skills": ["SKILL-001", "SKILL-003", "SKILL-004"]},
+      {"feature": "Delete Task", "primary_skills": ["SKILL-001", "SKILL-003", "SKILL-004"]},
+      {"feature": "Toggle Status", "primary_skills": ["SKILL-001", "SKILL-003", "SKILL-004"]}
+    ]
+  }
+}

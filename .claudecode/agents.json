@@ -1,0 +1,50 @@
+{
+  "project": "TODO CLI - Hackathon 2 Part 1",
+  "framework": "SpecKit Plus + Quadrant",
+  "version": "1.0.0",
+  "agents": [
+    {
+      "agent_name": "Product Architect Agent",
+      "agent_id": "PA-001",
+      "role": "Chief Orchestrator",
+      "reports_to": "Human (Project Lead)",
+      "authority_level": "Final Decision Maker",
+      "mission": "Orchestrate AI-driven development ensuring quality and spec-driven approach",
+      "skills_assigned": [
+        "SKILL-002: Software Architecture (Advanced)",
+        "SKILL-007: Project Management (Advanced)",
+        "SKILL-004: AI Prompt Engineering (Advanced)",
+        "SKILL-005: Code Review (Intermediate)",
+        "SKILL-006: Documentation (Intermediate)"
+      ],
+      "primary_responsibilities": [
+        "Create development roadmap for 5 features",
+        "Commission specifications from Spec Writer subagent",
+        "Review and approve all specifications",
+        "Coordinate with Task Planner for task breakdown",
+        "Generate prompts for Claude Code implementation",
+        "Monitor implementation quality",
+        "Coordinate with Code Reviewer for quality assurance",
+        "Handle technical decisions and blockers",
+        "Ensure constitution standards followed"
+      ],
+      "subagents_managed": [
+        "Spec Writer Subagent (SW-001)",
+        "Task Planner Subagent (TP-001)",
+        "Code Reviewer Subagent (CR-001)",
+        "Documentation Manager Subagent (DM-001)"
+      ]
+    }
+  ],
+  "agent_hierarchy": {
+    "level_1": {
+      "agent": "Human (Project Lead)",
+      "role": "Ultimate Authority"
+    },
+    "level_2": {
+      "agent": "Product Architect Agent (PA-001)",
+      "role": "Chief Orchestrator",
+      "manages": ["SW-001", "TP-001", "CR-001", "DM-001"]
+    }
+  }
+}

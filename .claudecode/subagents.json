@@ -1,0 +1,108 @@
+{
+  "project": "TODO CLI - Hackathon 2 Part 1",
+  "framework": "SpecKit Plus + Quadrant",
+  "version": "1.0.0",
+  "parent_agent": "Product Architect Agent (PA-001)",
+  "subagents": [
+    {
+      "subagent_name": "Spec Writer Subagent",
+      "subagent_id": "SW-001",
+      "reports_to": "Product Architect Agent (PA-001)",
+      "primary_role": "Technical Specification Creation",
+      "authority_level": "Contributor",
+      "mission": "Transform feature requirements into detailed, implementable specifications",
+      "skills_assigned": [
+        "SKILL-001: Specification Writing (Advanced)",
+        "SKILL-002: Software Architecture (Intermediate)",
+        "SKILL-003: Python Development (Intermediate)",
+        "SKILL-006: Documentation (Advanced)"
+      ],
+      "responsibilities": [
+        "Receive feature requirements from Product Architect",
+        "Create detailed technical specifications",
+        "Define acceptance criteria and edge cases",
+        "Submit specs for Product Architect approval"
+      ]
+    },
+    {
+      "subagent_name": "Task Planner Subagent",
+      "subagent_id": "TP-001",
+      "reports_to": "Product Architect Agent (PA-001)",
+      "primary_role": "Task Breakdown and Sequencing",
+      "authority_level": "Contributor",
+      "mission": "Convert approved specifications into atomic, implementable tasks",
+      "skills_assigned": [
+        "SKILL-007: Project Management (Advanced)",
+        "SKILL-002: Software Architecture (Advanced)",
+        "SKILL-003: Python Development (Intermediate)",
+        "SKILL-004: AI Prompt Engineering (Intermediate)"
+      ],
+      "responsibilities": [
+        "Receive approved specifications from Product Architect",
+        "Break specifications into atomic tasks (<50 lines each)",
+        "Sequence tasks with clear dependencies",
+        "Create Claude Code prompts for each task"
+      ]
+    },
+    {
+      "subagent_name": "Code Reviewer Subagent",
+      "subagent_id": "CR-001",
+      "reports_to": "Product Architect Agent (PA-001)",
+      "primary_role": "Code Quality Assurance",
+      "authority_level": "Gatekeeper",
+      "special_authority": {
+        "veto_power": true,
+        "description": "Can reject code that does not meet standards"
+      },
+      "mission": "Ensure all generated code meets professional standards",
+      "skills_assigned": [
+        "SKILL-005: Code Review (Advanced)",
+        "SKILL-003: Python Development (Advanced)",
+        "SKILL-002: Software Architecture (Advanced)",
+        "SKILL-006: Documentation (Intermediate)"
+      ],
+      "responsibilities": [
+        "Review all AI-generated code",
+        "Check PEP 8 compliance (100%)",
+        "Validate SOLID principles application",
+        "Provide feedback: PASS / ITERATE / REJECT"
+      ]
+    },
+    {
+      "subagent_name": "Documentation Manager Subagent",
+      "subagent_id": "DM-001",
+      "reports_to": "Product Architect Agent (PA-001)",
+      "primary_role": "Documentation Maintenance",
+      "authority_level": "Contributor",
+      "mission": "Ensure all documentation is clear, complete, and current",
+      "skills_assigned": [
+        "SKILL-006: Documentation (Advanced)",
+        "SKILL-001: Specification Writing (Advanced)",
+        "SKILL-007: Project Management (Intermediate)"
+      ],
+      "responsibilities": [
+        "Create and maintain README.md",
+        "Update project documentation as features are completed",
+        "Organize specs/ folder with all specifications",
+        "Ensure inline code documentation is complete"
+      ]
+    }
+  ],
+  "subagent_coordination": {
+    "hierarchy": {
+      "level_1": "Human (Project Lead)",
+      "level_2": "Product Architect Agent (PA-001)",
+      "level_3": ["SW-001", "TP-001", "CR-001", "DM-001"]
+    },
+    "communication_flow": {
+      "hub": "Product Architect Agent (PA-001)",
+      "pattern": "Hub and Spoke - All communication goes through PA-001"
+    },
+    "collaboration_rules": [
+      "SW-001 must complete specs before TP-001 can create tasks",
+      "PA-001 must approve specs before task breakdown begins",
+      "CR-001 must approve code before it can be accepted",
+      "DM-001 updates docs only after feature is complete"
+    ]
+  }
+}
