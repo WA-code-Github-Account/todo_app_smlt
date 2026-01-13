@@ -120,11 +120,11 @@ app.get('/', async (req, res) => {
     <body>
         <div class="container">
             <h1>✅ Todo Master - Simple Version ✅</h1>
-            
+
             <div id="stats" class="stats">
                 <p>Loading...</p>
             </div>
-            
+
             <form id="addForm">
                 <div class="form-group">
                     <input type="text" id="title" placeholder="Task title..." required>
@@ -134,7 +134,7 @@ app.get('/', async (req, res) => {
                 </div>
                 <button type="submit">➕ Add Task</button>
             </form>
-            
+
             <h2>📋 Your Tasks</h2>
             <div id="taskList">
                 <div class="loading">Loading tasks...</div>
@@ -145,26 +145,26 @@ app.get('/', async (req, res) => {
             // Load tasks when page loads
             document.addEventListener('DOMContentLoaded', () => {
                 loadTasks();
-                
+
                 // Handle form submission
                 document.getElementById('addForm').addEventListener('submit', async (e) => {
                     e.preventDefault();
-                    
+
                     const title = document.getElementById('title').value;
                     const description = document.getElementById('description').value;
-                    
+
                     try {
                         const response = await fetch('/add', {
                             method: 'POST',
                             headers: {
-                                'Content-Type': 'application/x-www-form-urlencoded',
+                                'Content-Type': 'application/json',
                             },
-                            body: new URLSearchParams({
+                            body: JSON.stringify({
                                 title: title,
                                 description: description
                             })
                         });
-                        
+
                         if (response.ok) {
                             document.getElementById('title').value = '';
                             document.getElementById('description').value = '';
@@ -183,26 +183,26 @@ app.get('/', async (req, res) => {
                 try {
                     const response = await fetch('/api/tasks');
                     const tasks = await response.json();
-                    
+
                     // Update stats
                     const total = tasks.length;
                     const completed = tasks.filter(t => t.status === 'complete').length;
                     const pending = total - completed;
-                    
+
                     document.getElementById('stats').innerHTML = \`
                         <p>Total: \${total} | Completed: \${completed} | Pending: \${pending}</p>
                     \`;
-                    
+
                     // Render tasks
                     const taskList = document.getElementById('taskList');
-                    
+
                     if (tasks.length === 0) {
                         taskList.innerHTML = '<p style="text-align: center; color: #ccc; padding: 20px;">📭 No tasks yet! Add one above.</p>';
                         return;
                     }
-                    
+
                     taskList.innerHTML = '';
-                    
+
                     tasks.forEach(task => {
                         const taskElement = document.createElement('div');
                         taskElement.className = \`task \${task.status === 'complete' ? 'completed' : ''}\`;
@@ -229,7 +229,7 @@ app.get('/', async (req, res) => {
                     const response = await fetch(\`/toggle/\${id}\`, {
                         method: 'PUT'
                     });
-                    
+
                     if (response.ok) {
                         loadTasks(); // Refresh the task list
                     } else {
@@ -245,12 +245,12 @@ app.get('/', async (req, res) => {
                 if (!confirm('Are you sure you want to delete this task?')) {
                     return;
                 }
-                
+
                 try {
-                    const response = await fetch(\`/delete/\${id}\`, {
+                    const response = await fetch('/delete/' + id, {
                         method: 'DELETE'
                     });
-                    
+
                     if (response.ok) {
                         loadTasks(); // Refresh the task list
                     } else {
@@ -281,7 +281,7 @@ app.get('/api/tasks', async (req, res) => {
 app.post('/add', async (req, res) => {
   try {
     const { title, description } = req.body;
-    
+
     if (!title) {
       return res.status(400).json({ error: 'Title is required' });
     }
@@ -298,7 +298,7 @@ app.post('/add', async (req, res) => {
 
     tasks.push(newTask);
     await saveTasks(tasks);
-    
+
     res.json(newTask);
   } catch (error) {
     res.status(500).json({ error: 'Failed to add task' });
@@ -309,7 +309,7 @@ app.put('/toggle/:id', async (req, res) => {
   try {
     const taskId = parseInt(req.params.id);
     let tasks = await loadTasks();
-    
+
     const taskIndex = tasks.findIndex(t => t.id === taskId);
 
     if (taskIndex === -1) {
@@ -318,7 +318,7 @@ app.put('/toggle/:id', async (req, res) => {
 
     tasks[taskIndex].status = tasks[taskIndex].status === 'complete' ? 'incomplete' : 'complete';
     await saveTasks(tasks);
-    
+
     res.json(tasks[taskIndex]);
   } catch (error) {
     res.status(500).json({ error: 'Failed to toggle task' });
@@ -329,7 +329,7 @@ app.delete('/delete/:id', async (req, res) => {
   try {
     const taskId = parseInt(req.params.id);
     let tasks = await loadTasks();
-    
+
     const filteredTasks = tasks.filter(t => t.id !== taskId);
 
     if (filteredTasks.length === tasks.length) {
@@ -344,5 +344,5 @@ app.delete('/delete/:id', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(\`Server is running on port \${PORT}\`);
+  console.log('Server is running on port ' + PORT);
 });

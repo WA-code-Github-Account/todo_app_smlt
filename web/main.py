@@ -1,12 +1,16 @@
 from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
 import json
 import os
 from datetime import datetime
 from typing import Optional
 
 app = FastAPI()
+
+# Mount static files
+app.mount("/static", StaticFiles(directory="web/static"), name="static")
 
 # Templates directory
 templates = Jinja2Templates(directory="web/templates")
